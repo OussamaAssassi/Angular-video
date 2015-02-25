@@ -5,9 +5,14 @@
         <title>Angular-video</title>
     </head>
     <body ng-controller="MainCtrl">
-        {{msg}}
+        <ul>
+            <li ng-repeat="video in list">
+                <img ng-src="{{video.snippet.thumbnails.medium.url}}" alt="">
+            </li>
+        </ul>
         <script src="vendors/angular.min.js"></script>
         <script src="js/app.js"></script>
+        <script src="js/services/youtubeService.js"></script>
         <script src="js/controllers/MainCtrl.js"></script>
     </body>
 </html>
