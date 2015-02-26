@@ -1,4 +1,4 @@
-app.controller('MainCtrl', ['$scope','$timeout','$sce','youtubeService', function($scope, $timeout, $sce, youtubeService) {
+app.controller('MainCtrl', ['$scope','$timeout','$sce', '$cookieStore','youtubeService', function($scope, $timeout, $sce, $cookieStore, youtubeService) {
     
     $scope.videoList = function(query) {
             youtubeService.getSearchList(query).then(function (data) {
@@ -16,4 +16,20 @@ app.controller('MainCtrl', ['$scope','$timeout','$sce','youtubeService', functio
         $scope.videoUrl = $sce.trustAsResourceUrl('https://www.youtube.com/embed/' + videoId + '?autoplay=1');
     };
 
+    
+    $scope.favorites = $cookieStore.get('favorites');
+    
+    $scope.addToFavorite = function(video) {
+        
+        if(!$scope.favorites)
+        {
+            $scope.favorites = [];
+        }
+        
+        $scope.favorites.push(video); 
+        $cookieStore.put('favorites',$scope.favorites);
+        $scope.favorites = $cookieStore.get('favorites');
+         console.log($cookieStore.get('favorites'));
+    }
+        
 }]);

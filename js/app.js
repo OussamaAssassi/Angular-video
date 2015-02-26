@@ -1,3 +1,3 @@
 "use strict"
 
-var app = angular.module('angularVideo', []);
+var app = angular.module('angularVideo', ['ngCookies']);

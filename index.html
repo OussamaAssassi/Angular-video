@@ -10,12 +10,24 @@
        </div>
        <input type="text" placeholder="Search" ng-model="search" ng-keyup="videoList(search)">
         <ul>
-            <li ng-repeat="video in list" ng-click="getVideoUrl(video.id.videoId)">
+            <li ng-repeat="video in list" >
                 <h2>{{video.snippet.title}}</h2>
-                <img ng-src="{{video.snippet.thumbnails.medium.url}}" alt="" >
+                <div ng-click="addToFavorite(video)">+</div>
+                <img ng-src="{{video.snippet.thumbnails.medium.url}}" alt="" ng-click="getVideoUrl(video.id.videoId)">
             </li>
         </ul>
+        
+        <h1>FAVORIS</h1>
+        
+        <ul>
+            <li ng-repeat="favorite in favorites" ng-click="getVideoUrl(favorite.id.videoId)">
+                <h2>{{favorite.snippet.title}}</h2>
+                <img ng-src="{{favorite.snippet.thumbnails.medium.url}}" alt="" >
+            </li>
+        </ul>    
+        
         <script src="vendors/angular.min.js"></script>
+        <script src="vendors/angular-cookies.min.js"></script>
         <script src="js/app.js"></script>
         <script src="js/services/youtubeService.js"></script>
         <script src="js/controllers/MainCtrl.js"></script>
