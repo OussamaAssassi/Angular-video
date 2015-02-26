@@ -3,16 +3,21 @@
     <head>
         <meta charset="utf-8">
         <title>Angular-video</title>
+        <script src="vendors/angular.min.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/services/youtubeService.js"></script>
+        <script src="js/controllers/MainCtrl.js"></script>
+        <script src="js/directives/youtubeIframeDirective.js"></script>
     </head>
     <body ng-controller="MainCtrl">
+       <youtube-iframe url="{{activeVideo}}"></youtube-iframe>
+       <input type="text" placeholder="Search" ng-model="search" ng-keyup="videoList(search)">
+       <span>{{activeVideo}}</span>
         <ul>
             <li ng-repeat="video in list">
                 <img ng-src="{{video.snippet.thumbnails.medium.url}}" alt="">
             </li>
         </ul>
-        <script src="vendors/angular.min.js"></script>
-        <script src="js/app.js"></script>
-        <script src="js/services/youtubeService.js"></script>
-        <script src="js/controllers/MainCtrl.js"></script>
+
     </body>
 </html>

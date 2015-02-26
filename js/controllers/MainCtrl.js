@@ -1,13 +1,19 @@
-app.controller('MainCtrl', ['$scope','youtubeService', function($scope,youtubeService) {
+app.controller('MainCtrl', ['$scope','youtubeService', function($scope, youtubeService) {
+    
+    $scope.activeVideo = "";
+    
+    $scope.videoList = function(query) {
 
-    var videoList = function() {
-        youtubeService.getSearchList().then(function (data) {
-            $scope.list = data;
-        }, function(error) {
-            console.log(error);
-        });
+            youtubeService.getSearchList(query).then(function (data) {
+                $scope.list = data;
+                $scope.activeVideo = data[0].id.videoId;
+
+                console.log($scope.activeVideo);
+            }, function(error) {
+                console.log(error);
+            });
     }
     
-    videoList();
+    $scope.videoList();
 
 }]);
