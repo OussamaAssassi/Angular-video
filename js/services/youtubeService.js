@@ -4,7 +4,7 @@ app.service('youtubeService', ['$http', '$q', function($http, $q) {
         
         var defered = $q.defer();
         
-        $http.get('https://www.googleapis.com/youtube/v3/search?key=AIzaSyDBzUEkRZSSRB8AdLJSgMq5OFzkmZS5ISk&part=snippet&type=video&q='+query)
+        $http.get('https://www.googleapis.com/youtube/v3/search?key=AIzaSyDtC6G78JU28Ke9zgKLa8QUg2YBQlzPAxQ&part=snippet&type=video&q='+query)
             .success(function(data){
                 defered.resolve(data.items);
             })

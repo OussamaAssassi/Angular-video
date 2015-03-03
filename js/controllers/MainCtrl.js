@@ -29,7 +29,14 @@ app.controller('MainCtrl', ['$scope','$timeout','$sce', '$cookieStore','youtubeS
         $scope.favorites.push(video); 
         $cookieStore.put('favorites',$scope.favorites);
         $scope.favorites = $cookieStore.get('favorites');
-         console.log($cookieStore.get('favorites'));
-    }
+    };
+    
+    $scope.removeFromFavorite = function(favorite) {
+        var index = $scope.favorites.indexOf(favorite);
+        if(index > -1) {
+            $scope.favorites.splice(index, 1);
+            $cookieStore.put('favorites',$scope.favorites);
+        }
+    };
         
 }]);

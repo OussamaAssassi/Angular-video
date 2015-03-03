@@ -22,6 +22,7 @@
         <ul>
             <li ng-repeat="favorite in favorites" ng-click="getVideoUrl(favorite.id.videoId)">
                 <h2>{{favorite.snippet.title}}</h2>
+                <div ng-click="removeFromFavorite(favorite)">-</div>
                 <img ng-src="{{favorite.snippet.thumbnails.medium.url}}" alt="" >
             </li>
         </ul>    
